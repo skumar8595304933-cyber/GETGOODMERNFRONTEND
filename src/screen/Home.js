@@ -9,16 +9,27 @@ function Home() {
   const [foodItem, setFoodItem] = useState([]);
 
   const loadData = async () => {
-    const response = await fetch("http://localhost:5000/dis/foodData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const response = await fetch("https://getgoodmernbackend.onrender.com/dis/foodData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const data = await response.json();
-    setFoodCat(data[0]);
-    setFoodItem(data[1]);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setFoodCat(data[0]);
+      setFoodItem(data[1]);
+    } catch (error) {
+      console.error("Error loading food data:", error);
+      // Set empty arrays on error to prevent crashes
+      setFoodCat([]);
+      setFoodItem([]);
+    }
   };
 
   useEffect(() => {

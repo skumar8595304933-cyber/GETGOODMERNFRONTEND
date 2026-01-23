@@ -19,19 +19,28 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/createuser", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(credentials)
-    });
+    try {
+      const response = await fetch("https://getgoodmernbackend.onrender.com/api/createuser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials)
+      });
 
-    const data = await response.json();
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    if (data.success) {
-      alert("Account created successfully 🎉");
-      navigate("/login");
-    } else {
-      alert("Signup failed");
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Account created successfully 🎉");
+        navigate("/login");
+      } else {
+        alert("Signup failed");
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("Failed to connect to server. Please try again later.")
     }
   };
 

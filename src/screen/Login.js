@@ -17,19 +17,28 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const response = await fetch("http://localhost:5000/api/loginuser", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(credentials)
-    })
+    try {
+      const response = await fetch("https://getgoodmernbackend.onrender.com/api/loginuser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials)
+      })
 
-    const data = await response.json()
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    if (data.success) {
-      localStorage.setItem("token", data.token)
-      navigate("/")
-    } else {
-      alert("Invalid credentials")
+      const data = await response.json()
+
+      if (data.success) {
+        localStorage.setItem("token", data.token)
+        navigate("/")
+      } else {
+        alert("Invalid credentials")
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Failed to connect to server. Please try again later.")
     }
   }
 
