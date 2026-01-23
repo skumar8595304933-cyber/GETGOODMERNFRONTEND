@@ -1,0 +1,55 @@
+/* Full screen center */
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+/* Card */
+.login-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.login-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Buttons */
+.btn-primary {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.btn-outline-danger {
+  border-radius: 8px;
+}
+
+/* Mobile optimization */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px 20px;
+  }
+}
