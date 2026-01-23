@@ -10,7 +10,8 @@ function Home() {
 
   const loadData = async () => {
     try {
-      const response = await fetch("https://getgoodmernbackend.onrender.com/dis/foodData", {
+      const apiUrl = process.env.REACT_APP_API_URL || "https://getgoodmernbackend.onrender.com";
+      const response = await fetch(`${apiUrl}/dis/foodData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

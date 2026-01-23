@@ -5,11 +5,11 @@ function NavBar() {
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    localStorage.removeItem('authToken')
+    localStorage.removeItem('token')
     navigate('/login')
   }
 
-  const isLoggedIn = localStorage.getItem('authToken')
+  const isLoggedIn = localStorage.getItem('token')
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

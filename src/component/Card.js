@@ -2,13 +2,13 @@ import React from "react";
 
 function Card(props) {
 
-  let options=props.options;
-  let prixeOptions=Object.keys(options)
+  const options = props.options || {};
+  const priceOptions = Object.keys(options);
 
   return (
     <div>
       <div className="card mt-4" style={{ width: "18rem", maxHeight: "360px" }}>
-        <img className="card-img-top" src={props.imgSrc} alt="Card image cap" style={{ height: "150px", objectFit: "cover" }}
+        <img className="card-img-top" src={props.imgSrc} alt={props.foodName || "Food item"} style={{ height: "150px", objectFit: "cover" }}
  />
  
         <div className="card-body">
@@ -30,7 +30,7 @@ function Card(props) {
 
             <select className="m-2 bg-success rounded">
              {
-              prixeOptions.map((data)=>{
+              priceOptions.map((data)=>{
                 return <option key={data} value={data}>{data}</option>
               })
              }
