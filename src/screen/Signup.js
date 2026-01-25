@@ -20,7 +20,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const apiUrl = process.env.REACT_APP_API_URL || "https://getgoodmernbackend.onrender.com";
+      const apiUrl = process.env.REACT_APP_API_URL || "https://getgoodmernbackend-1.onrender.com";
       const response = await fetch(`${apiUrl}/api/createuser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
