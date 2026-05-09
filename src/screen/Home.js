@@ -26,7 +26,7 @@ function Home() {
       setFoodCat(data[0]);
       setFoodItem(data[1]);
     } catch (error) {
-      console.error("Error loading food data:", error);
+      console.error("Error ah loading food data:", error);
       // Set empty arrays on error to prevent crashes
       setFoodCat([]);
       setFoodItem([]);
